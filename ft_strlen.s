@@ -1,3 +1,5 @@
+%include "includes.inc"
+
 		global _main
 
 		section		.data
@@ -9,9 +11,7 @@ _main:
 		mov rbx, 0
 		call _ft_strlen
 
-		mov rax, 0x2000001
-		mov rdi, 0
-		syscall
+		exit_program
 
 _ft_strlen:
 		inc rax
@@ -20,13 +20,7 @@ _ft_strlen:
 		cmp cl, 0
 		jne _ft_strlen
 		cmp rbx, 3
-		je _print_hello
-		ret
 
 _print_hello:
-		mov	rax, 0x2000004
-		mov	rdi, 1
-		mov rsi, string
-		mov rdx, 7
-		syscall
+		write 1, string, 6
 		ret
