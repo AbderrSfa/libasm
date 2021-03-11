@@ -1,11 +1,21 @@
-%include "includes.inc"
+;ssize_t 	ft_read(int fd, void *buf, size_t count);
+;return = rax
+;fd = rdi
+;buf = rsi
+;count = rdx
 
-		section		.bss
-name:	resb	10
+global		_ft_read
+extern ___error
 
-		section		.text
-		global		_main
-_main:
-		read 0, name, 10
-		write 1, name, 10
-		exit_program
+section		.text
+_ft_read:	mov rax, 0x2000003
+			syscall
+			jc exit
+			ret
+
+exit:		push rax
+			call ___error
+			pop rdx
+			mov [rax], rdx
+			mov rax, -1
+			ret
