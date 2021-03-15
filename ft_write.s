@@ -5,7 +5,7 @@
 ;count = rdx
 
 global		_ft_write
-extern ___error
+extern 		___error
 
 section		.text
 

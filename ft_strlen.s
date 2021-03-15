@@ -4,15 +4,14 @@
 
 global		_ft_strlen
 
-		section		.text
-_ft_strlen:
-		mov rax, -1
-		jmp _loop
+section		.text
 
-_loop:
-		mov cl, [rdi]
-		inc rdi
-		inc rax
-		cmp cl, 0
-		jne _loop
-		ret
+_ft_strlen:	mov rax, -1
+			jmp looper
+
+looper:		mov cl, [rdi]
+			inc rdi
+			inc rax
+			cmp cl, 0
+			jne looper
+			ret

@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#define TEST1 "fqwfqwfqwfqqwf"
+#define TEST2 "Hello"
+
 size_t	ft_strlen(const char *s);
 char	*ft_strcpy(char * dst, const char * src);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -15,30 +18,36 @@ char *	ft_strdup(const char *s1);
 
 int main(int argc, char const *argv[])
 {
-	char	a[10];
-	char	b[10];
+	char	*a;
+	char	b[80];
 	int		fd;
 	int		fd2;
 
 	fd = open("trry.txt", O_RDWR);
 	fd2 = open("trry.txt", O_RDWR);
 
-	//printf("MINE:\t|%d|\n", ft_strlen(NULL));
-	//printf("ORIGINAL:\t|%d|\n", strlen(NULL));
+	printf("ft_strlen:\n");
+	printf("MINE:\t\t|%lu|\n", ft_strlen(TEST1));
+	printf("ORIGINAL:\t|%lu|\n", strlen(TEST1));
 
-	//printf("MINE:\t\t|%s|\n", ft_strcpy(a, "Yeeeeeeee"));
-	//printf("ORIGINAL:\t|%s|\n", strcpy(a, "Yeeeeeeee"));
+	printf("\nft_strcpy:\n");
+	printf("MINE:\t\t|%s|\n", ft_strcpy(b, TEST1));
+	printf("ORIGINAL:\t|%s|\n", strcpy(b, TEST1));
 
-	//printf("MINE:\t\t|%d|\n", ft_strcmp("Yeet", "woah"));
-	//printf("ORIGINAL:\t|%d|\n", strcmp("Yeet", "woah"));
+	printf("\nft_strcmp\n");
+	printf("MINE:\t\t|%d|\n", ft_strcmp(TEST1, TEST2));
+	printf("ORIGINAL:\t|%d|\n", strcmp(TEST1, TEST2));
 
-	//printf("\t|%ld|\n", ft_write(0, "Yeeeeeee", 5));
-	//printf("\t|%ld|\n", write(0, "Yeeeeeee", 5));
+	printf("\nft_write\n");
+	printf("MINE:\t\t|%ld|\n", ft_write(fd, "Yeeeeeee", 5));
+	printf("ORIGINAL:\t|%ld|\n", write(fd2, "Yeeeeeee", 5));
 
-	printf("MINE:\t\t|%ld|\n", ft_read(fd, a, 5));
-	printf("ORIGINAL:\t|%ld|\n", read(fd2, a, 5));
-	
-	//printf("MINE:\t\t|%s|\n", ft_strdup("YEET"));
-	//printf("ORIGINAL:\t|%s|\n", strdup("YEET"));
+	printf("\nft_read\n");
+	printf("MINE:\t\t|%ld|\n", ft_read(fd, b, 5));
+	printf("ORIGINAL:\t|%ld|\n", read(fd2, b, 5));
+
+	printf("\nft_strdup\n");	
+	printf("MINE:\t\t|%s|\n", a = ft_strdup(TEST1));
+	printf("ORIGINAL:\t|%s|\n", strdup(TEST1));
 	return (0);
 }

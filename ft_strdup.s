@@ -2,41 +2,42 @@
 ;return = rax
 ;s1 = rdi
 
-			extern _malloc
+global		_ft_strdup
+extern 		_malloc
 
-			section		.text
-			global		_ft_strdup
-_ft_strdup:
-			push rdi
-			call _ft_strlen
-			mov rsi, rax
+section		.text
+
+_ft_strdup:	push rdi
+			call ft_strlen
 
 			mov rdi, rax
 			call _malloc
 
-			pop rdi
-			mov rdx, 0
-			jmp _looper
-		
-_looper:
-			mov cl, [rdi]
-			mov [rax], cl
-			inc rax
-			inc rdi
-			cmp rdx, rsi
-			inc rdx
-			jne _looper
+			pop rsi
+			mov rdi, rax
+			call ft_strcpy
+
 			ret
 
+ft_strcpy:	mov rcx, 0
+			jmp looper2
 
-_ft_strlen:
-		mov rax, -1
-		jmp _loop
+looper2:	mov dl, BYTE [rsi + rcx]
+			mov BYTE [rdi + rcx], dl
+			cmp BYTE [rsi + rcx], 0
+			je exit
+			inc rcx
+			jmp looper2
 
-_loop:
-		mov cl, [rdi]
-		inc rdi
-		inc rax
-		cmp cl, 0
-		jne _loop
-		ret
+exit:		mov rax, rdi
+			ret
+
+ft_strlen:	mov rax, -1
+			jmp looper
+
+looper:		mov cl, [rdi]
+			inc rdi
+			inc rax
+			cmp cl, 0
+			jne looper
+			ret

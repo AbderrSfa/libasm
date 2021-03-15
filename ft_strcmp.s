@@ -3,10 +3,11 @@
 ;s1 = rdi
 ;s2 = rsi
 
-			section		.text
-			global		_ft_strcmp
-_ft_strcmp:
-			mov rax, 0
+global		_ft_strcmp
+
+section		.text
+
+_ft_strcmp:	mov rax, 0
 			mov dl, [rdi]
 			mov cl, [rsi]
 			inc rdi
@@ -20,16 +21,13 @@ _ft_strcmp:
 			jg _greater
 			je _ft_strcmp
 
-_return:
-			cmp dl, cl
+_return:	cmp dl, cl
 			jl _lesser
 			jg _greater
 			ret
 
-_greater:
-			mov rax, 1
+_greater:	mov rax, 1
 			ret
 
-_lesser:
-			mov rax, -1
+_lesser:	mov rax, -1
 			ret
