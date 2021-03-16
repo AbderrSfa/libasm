@@ -12,7 +12,7 @@ _ft_strcpy:	mov rcx, 0
 
 looper:		mov dl, BYTE [rsi + rcx]
 			mov BYTE [rdi + rcx], dl
-			cmp BYTE [rsi + rcx], 0
+			cmp dl, 0
 			je exit
 			inc rcx
 			jmp looper
