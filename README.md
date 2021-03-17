@@ -2,7 +2,7 @@
 
 ## Description
 The aim of this project is to get familiar with assembly languagem by writing the following functions in x86 64-bit assembly (Intel syntax):
-```
+```c
 int		ft_strlen(char const *str);
 int		ft_strcmp(char const *s1, char const *s2);
 char		*ft_strcpy(char *dst, char const *src);
