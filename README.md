@@ -1,6 +1,6 @@
-# libasm
+# 📠 libasm
 
-## Description
+## 🧐 Description
 The aim of this project is to get familiar with assembly language, by writing the following functions in x86 64-bit assembly (Intel syntax):
 ```c
 int		ft_strlen(char const *str);
@@ -11,7 +11,7 @@ ssize_t		ft_read(int fd, void *buf, size_t nbyte);
 char		*ft_strdup(char const *s1);
 ```
 
-## Usage
+## 🔧 Usage
 To create the `libasm.a` library, run:
 
 `make`
